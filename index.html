@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>🎄🎁 MERRY FISHMAS! 🐠🎅</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="password-screen" class="password-screen">
+        <div class="snowflakes-password">
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+        </div>
+        <div class="password-container">
+            <div class="fish-animation">
+                <div class="fish fish1">🎄🐠</div>
+                <div class="fish fish2">🎅🐟</div>
+                <div class="fish fish3">🎁🐡</div>
+            </div>
+            <h2>🎄 MERRY FISHMAS! 🐠</h2>
+            <p>Santa's fish need the secret code! 🎅</p>
+            <input type="password" id="password-input" placeholder="Enter the magic word..." autocomplete="off">
+            <button id="submit-btn" onclick="checkPassword()">🎅 Enter the Aquarium 🐠</button>
+            <p id="error-msg" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden until password is correct) -->
+    <div id="main-content" class="main-content hidden">
+        <div class="aquarium-container">
+            <!-- Snowflakes -->
+            <div class="snowflakes">
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+                <div class="snowflake">❄</div>
+            </div>
+
+            <!-- Animated Background (Christmas Ornaments/Bubbles) -->
+            <div class="bubbles">
+                <div class="bubble">🎄</div>
+                <div class="bubble">🎅</div>
+                <div class="bubble">🎁</div>
+                <div class="bubble">❄</div>
+                <div class="bubble">⭐</div>
+                <div class="bubble">🎄</div>
+                <div class="bubble">🎅</div>
+                <div class="bubble">🎁</div>
+            </div>
+
+            <!-- Floating Christmas Fish -->
+            <div class="floating-fish">
+                <div class="fish-float fish-float-1">🎄🐠</div>
+                <div class="fish-float fish-float-2">🎅🐟</div>
+                <div class="fish-float fish-float-3">🎁🐡</div>
+                <div class="fish-float fish-float-4">🦈🎄</div>
+                <div class="fish-float fish-float-5">🐙🎅</div>
+            </div>
+
+            <!-- Scattered Photos - The Funny Part! -->
+            <div class="scattered-photos">
+                <img src="DSC06560.jpg" alt="Photo 1" class="scattered-photo photo-1">
+                <img src="IMG_5396.jpg" alt="Photo 2" class="scattered-photo photo-2">
+                <img src="IMG_7275.JPG" alt="Photo 3" class="scattered-photo photo-3">
+                <img src="IMG_1909.HEIC" alt="Photo 4" class="scattered-photo photo-4" onerror="this.style.display='none'">
+                <img src="IMG_2652.HEIC" alt="Photo 5" class="scattered-photo photo-5" onerror="this.style.display='none'">
+                <img src="IMG_4384.HEIC" alt="Photo 6" class="scattered-photo photo-6" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Main Card -->
+            <div class="gift-card">
+                <div class="card-header">
+                    <h1>🎄🎁 MERRY FISHMAS! 🐠🎅</h1>
+                    <div class="wave-animation">🌊❄🌊</div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="gift-icon">🎣🎄</div>
+                    <h2>Your Aquarium Gift Card Has Arrived!</h2>
+                    <p class="message">Santa's fish delivered it! 🐠🎅</p>
+                    
+                    <div class="gift-card-display">
+                        <div class="card-container">
+                            <div class="card-front">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <h3>🎄 Christmas Aquarium Gift Card 🐠</h3>
+                                    <div class="card-value">$100</div>
+                                    <p>Redeem at your favorite aquarium store!</p>
+                                    <p class="funny-text">Because fish deserve Christmas too! 🎅🐟</p>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="card-pattern"></div>
+                                <div class="card-content">
+                                    <h3>📱 Check Your Texts! 📱</h3>
+                                    <div class="text-icon">💬</div>
+                                    <p class="back-message">Your gift card code has been sent to your phone!</p>
+                                    <p class="back-instruction">Check your text messages for the code 🎁</p>
+                                    <p class="back-note">🎄 Merry Fishmas! 🐠</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="instructions">
+                        <p>🎉 CONGRATULATIONS! 🎉</p>
+                        <p>You've been gifted an aquarium gift card!</p>
+                        <p>🎄 Check your email for the code 🎄</p>
+                        <p class="unhinged-text">🎅 Santa's fish are watching... 🐠👀</p>
+                    </div>
+
+                    <button class="reveal-btn" onclick="revealCard()">🎁 Reveal the Magic! 🎁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

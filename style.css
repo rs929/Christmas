@@ -1,0 +1,797 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(180deg, #0a1a2e 0%, #16213e 25%, #0f3460 50%, #1a1a2e 75%, #16213e 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Snowflakes */
+.snowflakes, .snowflakes-password {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -50px;
+  font-size: 20px;
+  color: white;
+  animation: snowfall 15s linear infinite;
+  opacity: 0.8;
+}
+
+.snowflake:nth-child(1) {
+  left: 10%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+  font-size: 15px;
+}
+
+.snowflake:nth-child(2) {
+  left: 25%;
+  animation-duration: 18s;
+  animation-delay: 2s;
+  font-size: 20px;
+}
+
+.snowflake:nth-child(3) {
+  left: 40%;
+  animation-duration: 14s;
+  animation-delay: 4s;
+  font-size: 18px;
+}
+
+.snowflake:nth-child(4) {
+  left: 55%;
+  animation-duration: 16s;
+  animation-delay: 1s;
+  font-size: 22px;
+}
+
+.snowflake:nth-child(5) {
+  left: 70%;
+  animation-duration: 20s;
+  animation-delay: 3s;
+  font-size: 16px;
+}
+
+.snowflake:nth-child(6) {
+  left: 85%;
+  animation-duration: 13s;
+  animation-delay: 5s;
+  font-size: 19px;
+}
+
+.snowflake:nth-child(7) {
+  left: 30%;
+  animation-duration: 17s;
+  animation-delay: 2.5s;
+  font-size: 21px;
+}
+
+.snowflake:nth-child(8) {
+  left: 60%;
+  animation-duration: 19s;
+  animation-delay: 4.5s;
+  font-size: 17px;
+}
+
+.snowflake:nth-child(9) {
+  left: 15%;
+  animation-duration: 15s;
+  animation-delay: 1.5s;
+  font-size: 18px;
+}
+
+.snowflake:nth-child(10) {
+  left: 75%;
+  animation-duration: 21s;
+  animation-delay: 6s;
+  font-size: 20px;
+}
+
+@keyframes snowfall {
+  0% {
+    top: -50px;
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100vh;
+    transform: translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Password Screen */
+.password-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #0a1a2e 0%, #16213e 25%, #0f3460 50%, #1a1a2e 75%, #16213e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.password-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 90%;
+  width: 350px;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.3);
+  position: relative;
+  z-index: 1001;
+}
+
+.password-container h2 {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.password-container p {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+#password-input {
+  width: 100%;
+  padding: 15px;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+#password-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#password-input:focus {
+  border-color: rgba(255, 215, 0, 0.8);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+#submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+#submit-btn:active {
+  transform: scale(0.98);
+}
+
+.error-msg {
+  color: #ff6b6b;
+  margin-top: 15px;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Fish Animation in Password Screen */
+.fish-animation {
+  position: relative;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.fish {
+  position: absolute;
+  font-size: 30px;
+  animation: swim 3s ease-in-out infinite;
+}
+
+.fish1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.fish2 {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.fish3 {
+  left: 80%;
+  animation-delay: 2s;
+}
+
+@keyframes swim {
+  0%,
+  100% {
+    transform: translateY(0) scaleX(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) scaleX(1) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(0) scaleX(-1) rotate(0deg);
+  }
+  75% {
+    transform: translateY(20px) scaleX(-1) rotate(5deg);
+  }
+}
+
+/* Main Content */
+.main-content {
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+.aquarium-container {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Bubbles Animation */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  font-size: 30px;
+  animation: rise 15s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.bubble:nth-child(1) {
+  left: 10%;
+  font-size: 25px;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+  left: 30%;
+  font-size: 30px;
+  animation-duration: 15s;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+  left: 50%;
+  font-size: 28px;
+  animation-duration: 18s;
+  animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+  left: 70%;
+  font-size: 32px;
+  animation-duration: 14s;
+  animation-delay: 1s;
+}
+
+.bubble:nth-child(5) {
+  left: 85%;
+  font-size: 24px;
+  animation-duration: 16s;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(6) {
+  left: 20%;
+  font-size: 29px;
+  animation-duration: 13s;
+  animation-delay: 5s;
+}
+
+.bubble:nth-child(7) {
+  left: 60%;
+  font-size: 27px;
+  animation-duration: 17s;
+  animation-delay: 2.5s;
+}
+
+.bubble:nth-child(8) {
+  left: 40%;
+  font-size: 31px;
+  animation-duration: 19s;
+  animation-delay: 4.5s;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -50px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 100vh;
+    opacity: 0;
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+
+/* Scattered Photos - The Hilarious Part! */
+.scattered-photos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999; /* Above everything! */
+  overflow: visible;
+}
+
+.scattered-photo {
+  position: absolute;
+  max-width: 140px;
+  max-height: 140px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; /* Make them circular! */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.3);
+  object-fit: cover; /* Ensure images fill the circle */
+  /* Background removal effects using CSS */
+  filter: contrast(1.2) saturate(1.3) brightness(1.1);
+  mix-blend-mode: normal;
+  /* Create a cutout effect */
+  background: transparent;
+  /* Add a subtle border to help define edges */
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  /* Make images slightly transparent */
+  opacity: 0.75;
+  z-index: 10000; /* Ensure each photo is above everything */
+  /* Remove CSS animations - physics handles movement now */
+  transition: transform 0.1s ease-out;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Try to isolate people by enhancing edges */
+.scattered-photo::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%; /* Match the circular shape */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  z-index: -1;
+  filter: blur(5px);
+}
+
+/* Initial positioning handled by JavaScript physics system */
+.photo-1, .photo-2, .photo-3, .photo-4, .photo-5, .photo-6 {
+  /* Physics system handles all positioning and movement */
+}
+
+/* Physics animations are handled by JavaScript now */
+
+/* Floating Fish */
+.floating-fish {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fish-float {
+  position: absolute;
+  font-size: 45px;
+  animation: float 20s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.fish-float-1 {
+  top: 10%;
+  left: -50px;
+  animation-duration: 25s;
+  animation-delay: 0s;
+}
+
+.fish-float-2 {
+  top: 30%;
+  right: -50px;
+  animation-duration: 30s;
+  animation-delay: 5s;
+  animation-direction: reverse;
+}
+
+.fish-float-3 {
+  top: 50%;
+  left: -50px;
+  animation-duration: 28s;
+  animation-delay: 10s;
+}
+
+.fish-float-4 {
+  top: 70%;
+  right: -50px;
+  animation-duration: 32s;
+  animation-delay: 15s;
+  animation-direction: reverse;
+}
+
+.fish-float-5 {
+  top: 20%;
+  left: 50%;
+  animation-duration: 22s;
+  animation-delay: 8s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(1) rotate(0deg);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-50px) scaleX(1) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0) scaleX(-1) rotate(0deg);
+  }
+  75% {
+    transform: translateX(75vw) translateY(50px) scaleX(-1) rotate(10deg);
+  }
+  100% {
+    transform: translateX(100vw) translateY(0) scaleX(1) rotate(0deg);
+  }
+}
+
+/* Gift Card */
+.gift-card {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 30px 20px;
+  margin-top: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255, 215, 0, 0.5);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.card-header h1 {
+  color: #c44569;
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.wave-animation {
+  font-size: 30px;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+.card-body {
+  text-align: center;
+}
+
+.gift-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+  }
+}
+
+.card-body h2 {
+  color: #0f3460;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.message {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.gift-card-display {
+  margin: 25px 0;
+  perspective: 1000px;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+.card-container.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #ff6b6b 0%, #c44569 50%, #ffd700 100%);
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #0a7ba8 0%, #0099cc 50%, #00d4ff 100%);
+  transform: rotateY(180deg);
+}
+
+.card-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.card-content h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-value {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-content p {
+  font-size: 14px;
+  opacity: 0.95;
+  margin: 5px 0;
+}
+
+.funny-text {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  margin-top: 10px !important;
+}
+
+/* Card Back Styling */
+.text-icon {
+  font-size: 60px;
+  margin: 20px 0;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.back-message {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  margin: 15px 0 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.back-instruction {
+  font-size: 16px !important;
+  margin: 15px 0 !important;
+  opacity: 0.95;
+}
+
+.back-note {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  margin-top: 20px !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.instructions {
+  margin: 25px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 107, 0.2) 100%);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.instructions p {
+  color: #0f3460;
+  font-size: 15px;
+  margin: 8px 0;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.unhinged-text {
+  color: #c44569 !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.reveal-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #c44569 50%, #ffd700 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.reveal-btn:active {
+  transform: scale(0.98);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+  .password-container {
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  .gift-card {
+    padding: 25px 15px;
+  }
+
+  .card-header h1 {
+    font-size: 24px;
+  }
+
+  .card-body h2 {
+    font-size: 20px;
+  }
+
+  /* Adjust photo sizes on mobile */
+  .scattered-photo {
+    max-width: 100px;
+    max-height: 100px;
+    width: 100px;
+    height: 100px;
+    opacity: 0.7;
+  }
+
+  .photo-1, .photo-2, .photo-3, .photo-4, .photo-5, .photo-6 {
+    transform: scale(0.5) !important;
+  }
+}
+
+/* Prevent text selection on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input {
+  -webkit-user-select: text;
+  user-select: text;
+}
